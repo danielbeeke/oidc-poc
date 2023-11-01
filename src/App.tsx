@@ -19,6 +19,9 @@ function App() {
     }
 
     if (auth.isAuthenticated) {
+
+        console.log(auth.user)
+
         return (
         <div>
             Hello {auth.user?.profile.sub}{" "}

@@ -9,7 +9,7 @@ const oidcConfig = {
   client_id: "oidc_client",
   client_secret: "a_different_secret",
   redirect_uri: "http://localhost:5173/redirect",
-  scope: 'profile lorem',
+  scope: 'openid profile lorem',
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
