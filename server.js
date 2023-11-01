@@ -2,6 +2,7 @@ import Provider from 'oidc-provider';
 import express from 'express'
 import jwks from './jwks.json' assert { type: 'json' }
 
+// https://www.scottbrady91.com/openid-connect/getting-started-with-oidc-provider
 const corsProp = 'urn:custom:client:allowed-cors-origins';
 const configuration = {
   jwks, // Used https://mkjwk.org/
