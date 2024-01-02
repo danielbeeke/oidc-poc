@@ -2,6 +2,25 @@ import Provider from 'oidc-provider';
 import express from 'express'
 import jwks from './jwks.json' assert { type: 'json' }
 
+import http from 'node:http'
+
+const oldSet = Headers.prototype.set;
+Headers.prototype.set = function set(
+  key,
+  value
+) {
+  if (Array.isArray(value)) {
+    this.delete(key);
+    value.forEach((v) => this.append(key, v));
+  } else {
+    oldSet.call(this, key, value);
+  }
+};
+
+http.OutgoingMessage.prototype.setHeader = function (key, value) {
+  this.set(key, value)
+}
+
 // https://www.scottbrady91.com/openid-connect/getting-started-with-oidc-provider
 const corsProp = 'urn:custom:client:allowed-cors-origins';
 const configuration = {
